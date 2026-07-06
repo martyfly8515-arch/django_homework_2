@@ -1,0 +1,36 @@
+{% extends 'bboard/base.html' %}
+
+{% block content %}
+
+<h1>Главная страница</h1>
+
+<section class="block">
+    <h2>Сортированный список с вложенными элементами</h2>
+
+    <ol>
+        <li>Изучить Django
+            <ol>
+                <li>Создать проект</li>
+                <li>Создать приложение</li>
+                <li>Настроить маршруты</li>
+            </ol>
+        </li>
+        <li>Подготовить HTML-страницы
+            <ol>
+                <li>Добавить navbar</li>
+                <li>Добавить карточку</li>
+                <li>Добавить footer</li>
+            </ol>
+        </li>
+        <li>Вывести данные из fake API</li>
+    </ol>
+</section>
+
+<section class="card">
+    <h2>{{ card.title }}</h2>
+    <p>{{ card.description }}</p>
+    <p class="price">{{ card.price }}</p>
+    <button>Подробнее</button>
+</section>
+
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends 'bboard/base.html' %}
+
+{% block content %}
+
+<h1>Данные из fake API</h1>
+
+<p>Данные получены с сайта jsonplaceholder.typicode.com/todos/</p>
+
+<div class="todo-list">
+    {% for todo in todos %}
+        <div class="todo-card">
+            <h3>Задача №{{ todo.id }}</h3>
+            <p>{{ todo.title }}</p>
+
+            {% if todo.completed %}
+                <span class="done">Выполнено</span>
+            {% else %}
+                <span class="not-done">Не выполнено</span>
+            {% endif %}
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock %}

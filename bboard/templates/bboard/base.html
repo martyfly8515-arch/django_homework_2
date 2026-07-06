@@ -1,0 +1,30 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Django Homework 2</title>
+    <link rel="stylesheet" href="{% static 'bboard/css/style.css' %}">
+</head>
+<body>
+
+<nav class="navbar">
+    <div class="logo">Django Homework</div>
+    <div class="nav-links">
+        <a href="/">Главная</a>
+        <a href="/todos/">API данные</a>
+    </div>
+</nav>
+
+<main class="container">
+    {% block content %}
+    {% endblock %}
+</main>
+
+<footer class="footer">
+    <p>Домашнее задание №2. Модуль 1. Основные понятия Django. Вывод данных.</p>
+</footer>
+
+</body>
+</html>
