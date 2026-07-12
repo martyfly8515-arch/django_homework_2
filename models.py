@@ -103,3 +103,17 @@ class Child(models.Model):
 
     def __str__(self):
         return self.full_name
+class IceCreamSelection(models.Model):
+    title = models.CharField(
+        max_length=100,
+        verbose_name='Название набора'
+    )
+
+    flavors = models.JSONField(
+        default=list,
+        blank=True,
+        verbose_name='Список мороженого'
+    )
+
+    def __str__(self):
+        return self.title
