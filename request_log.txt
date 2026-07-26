@@ -1,0 +1,14 @@
+Время: 2026-07-26 16:28:18.471538+00:00
+Метод запроса: GET
+Адрес страницы: /protected/
+GET-данные: {}
+Логин: отсутствует
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 YaBrowser/26.6.0.0 Safari/537.36
+----------------------------------------
+Время: 2026-07-26 16:46:35.087578+00:00
+Метод запроса: GET
+Адрес страницы: /protected/
+GET-данные: {'login': ['Vladimir']}
+Логин: Vladimir
+User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/148.0.0.0 YaBrowser/26.6.0.0 Safari/537.36
+----------------------------------------

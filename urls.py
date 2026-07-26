@@ -31,6 +31,11 @@ urlpatterns = [
         views.task_by_priority,
         name='task_by_priority'
     ),
+    path(
+    'protected/',
+    views.protected_page,
+    name='protected_page'
+),
 
     # Маршруты через регулярные выражения
     re_path(

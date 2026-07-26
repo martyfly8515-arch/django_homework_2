@@ -1,7 +1,11 @@
 import requests
 
 from django.http import HttpResponse, JsonResponse
-from django.shortcuts import get_object_or_404, render
+from pathlib import Path
+
+from django.conf import settings
+from django.shortcuts import get_object_or_404, redirect, render
+from django.utils import timezone
 
 from .models import Product
 
@@ -133,4 +137,33 @@ def tasks_json(request):
         tasks,
         safe=False,
         json_dumps_params={'ensure_ascii': False}
+    )
+
+    # ============================================================
+# ДОМАШНЕЕ ЗАДАНИЕ №16
+# Перенаправление при отсутствии логина и логирование запроса
+# ============================================================
+
+
+def protected_page(request):
+    login = request.GET.get('login')
+
+    log_file = Path(settings.BASE_DIR) / 'request_log.txt'
+
+    with log_file.open('a', encoding='utf-8') as file:
+        file.write(
+            f'Время: {timezone.now()}\n'
+            f'Метод запроса: {request.method}\n'
+            f'Адрес страницы: {request.path}\n'
+            f'GET-данные: {dict(request.GET)}\n'
+            f'Логин: {login or "отсутствует"}\n'
+            f'User-Agent: {request.headers.get("User-Agent", "")}\n'
+            '----------------------------------------\n'
+        )
+
+    if not login:
+        return redirect('home')
+
+    return HttpResponse(
+        f'Пользователь вошёл с логином: {login}'
     )
