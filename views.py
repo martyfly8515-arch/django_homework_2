@@ -1,6 +1,6 @@
 import requests
 
-from django.http import HttpResponse
+from django.http import HttpResponse, JsonResponse
 from django.shortcuts import get_object_or_404, render
 
 from .models import Product
@@ -111,4 +111,26 @@ def task_archive(request, task_id):
 def task_restore(request, task_id):
     return HttpResponse(
         f'Восстановление задачи №{task_id} из архива'
+    )
+
+    # ============================================================
+# ДОМАШНЕЕ ЗАДАНИЕ №15
+# Формирование списка через list comprehension и JsonResponse
+# ============================================================
+
+
+def tasks_json(request):
+    tasks = [
+        {
+            'id': number,
+            'title': f'Задача {number}',
+            'completed': number % 2 == 0,
+        }
+        for number in range(1, 11)
+    ]
+
+    return JsonResponse(
+        tasks,
+        safe=False,
+        json_dumps_params={'ensure_ascii': False}
     )

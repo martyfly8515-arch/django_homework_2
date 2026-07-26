@@ -17,6 +17,11 @@ urlpatterns = [
 
     # Обычные маршруты через path()
     path('tasks/', views.task_list, name='task_list'),
+    path(
+    'tasks/json/',
+    views.tasks_json,
+    name='tasks_json'
+),
     path('tasks/create/', views.task_create, name='task_create'),
     path('tasks/completed/', views.task_completed, name='task_completed'),
     path('tasks/pending/', views.task_pending, name='task_pending'),
