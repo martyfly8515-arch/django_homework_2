@@ -6,66 +6,106 @@ from bboard import views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', views.home, name='home'),
-    path('todos/', views.todos, name='todos'),
+
+    path(
+        '',
+        views.HomeView.as_view(),
+        name='home'
+    ),
+
+    path(
+        'todos/',
+        views.TodosView.as_view(),
+        name='todos'
+    ),
 
     path(
         'product/<int:product_id>/<str:action>/',
-        views.product_action,
+        views.ProductActionView.as_view(),
         name='product_action'
     ),
 
-    # Обычные маршруты через path()
-    path('tasks/', views.task_list, name='task_list'),
     path(
-    'tasks/json/',
-    views.tasks_json,
-    name='tasks_json'
-),
-    path('tasks/create/', views.task_create, name='task_create'),
-    path('tasks/completed/', views.task_completed, name='task_completed'),
-    path('tasks/pending/', views.task_pending, name='task_pending'),
-    path('tasks/search/', views.task_search, name='task_search'),
+        'tasks/',
+        views.TaskListView.as_view(),
+        name='task_list'
+    ),
+
+    path(
+        'tasks/json/',
+        views.TasksJsonView.as_view(),
+        name='tasks_json'
+    ),
+
+    path(
+        'tasks/create/',
+        views.TaskCreateView.as_view(),
+        name='task_create'
+    ),
+
+    path(
+        'tasks/completed/',
+        views.TaskCompletedView.as_view(),
+        name='task_completed'
+    ),
+
+    path(
+        'tasks/pending/',
+        views.TaskPendingView.as_view(),
+        name='task_pending'
+    ),
+
+    path(
+        'tasks/search/',
+        views.TaskSearchView.as_view(),
+        name='task_search'
+    ),
+
     path(
         'tasks/priority/<str:priority>/',
-        views.task_by_priority,
+        views.TaskByPriorityView.as_view(),
         name='task_by_priority'
     ),
-    path(
-    'protected/',
-    views.protected_page,
-    name='protected_page'
-),
 
-    # Маршруты через регулярные выражения
+    path(
+        'protected/',
+        views.ProtectedPageView.as_view(),
+        name='protected_page'
+    ),
+
     re_path(
         r'^tasks/(?P<task_id>\d+)/$',
-        views.task_detail,
+        views.TaskDetailView.as_view(),
         name='task_detail'
     ),
+
     re_path(
         r'^tasks/(?P<task_id>\d+)/update/$',
-        views.task_update,
+        views.TaskUpdateView.as_view(),
         name='task_update'
     ),
+
     re_path(
         r'^tasks/(?P<task_id>\d+)/delete/$',
-        views.task_delete,
+        views.TaskDeleteView.as_view(),
         name='task_delete'
     ),
+
     re_path(
         r'^tasks/(?P<task_id>\d+)/toggle/$',
-        views.task_toggle,
+        views.TaskToggleView.as_view(),
         name='task_toggle'
     ),
+
     re_path(
         r'^tasks/(?P<task_id>\d+)/archive/$',
-        views.task_archive,
+        views.TaskArchiveView.as_view(),
         name='task_archive'
     ),
+
     re_path(
         r'^tasks/(?P<task_id>\d+)/restore/$',
-        views.task_restore,
+        views.TaskRestoreView.as_view(),
         name='task_restore'
     ),
 ]
