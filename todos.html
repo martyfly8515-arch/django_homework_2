@@ -1,0 +1,44 @@
+{% extends 'bboard/base.html' %}
+
+{% block title %}
+API данные
+{% endblock %}
+
+{% block main %}
+<div class="container">
+    <h1>Данные из Fake API</h1>
+
+    <div class="todos">
+        {% for todo in page_obj %}
+        <div class="card">
+            <h3>{{ todo.title }}</h3>
+            <p>ID: {{ todo.id }}</p>
+
+            {% if todo.completed %}
+                <p>Статус: выполнено</p>
+            {% else %}
+                <p>Статус: не выполнено</p>
+            {% endif %}
+        </div>
+        {% endfor %}
+    </div>
+
+    <div class="pagination">
+        {% if page_obj.has_previous %}
+            <a href="?page={{ page_obj.previous_page_number }}">Назад</a>
+        {% endif %}
+
+        {% for num in page_obj.paginator.page_range %}
+            {% if page_obj.number == num %}
+                <strong>{{ num }}</strong>
+            {% else %}
+                <a href="?page={{ num }}">{{ num }}</a>
+            {% endif %}
+        {% endfor %}
+
+        {% if page_obj.has_next %}
+            <a href="?page={{ page_obj.next_page_number }}">Вперёд</a>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
